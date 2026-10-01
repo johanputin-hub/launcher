@@ -14,9 +14,11 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.7
+      - name: Find project folder
+        run: echo "DIR=$(dirname "$(find . -name settings.gradle.kts | head -1)")" >> $GITHUB_ENV
       - run: gradle assembleDebug
-        working-directory: ArizonaStyleLauncher
+        working-directory: ${{ env.DIR }}
       - uses: actions/upload-artifact@v4
         with:
           name: launcher-apk
-          path: ArizonaStyleLauncher/app/build/outputs/apk/debug/*.apk
+          path: ${{ env.DIR }}/app/build/outputs/apk/debug/*.apk
