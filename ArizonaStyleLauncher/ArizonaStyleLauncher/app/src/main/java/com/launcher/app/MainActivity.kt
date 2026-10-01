@@ -72,8 +72,8 @@ class MainActivity : AppCompatActivity() {
             }
         if (intent == null) {
             if (Config.CLIENT_APK_URL.isBlank()) {
-                Toast.makeText(this, "Client not installed. Install the game first.", Toast.LENGTH_LONG).show()
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(Config.CLIENT_STORE_URL)))
+                findViewById<TextView>(R.id.status).text = "Game client not installed (${Config.CLIENT_PACKAGE}). Install it first, then press PLAY."
+                Toast.makeText(this, "Game client not installed", Toast.LENGTH_LONG).show()
                 return
             }
             val bar = findViewById<ProgressBar>(R.id.progress)
@@ -89,7 +89,11 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("nickname", nick)
         intent.putExtra("ip", s.ip)
         intent.putExtra("port", s.port)
-        startActivity(intent)
+        try {
+            startActivity(intent)
+        } catch (e: Exception) {
+            findViewById<TextView>(R.id.status).text = "Could not start the game: ${e.message}"
+        }
     }
 
     /** Best effort: write nickname/server into the client's settings.ini (only works if storage access allows it). */
