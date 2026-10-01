@@ -66,10 +66,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchGame(nick: String, s: ServerInfo) {
         val pm = packageManager
-        val intent = pm.getLaunchIntentForPackage(Config.CLIENT_PACKAGE)
-            ?: Intent().setClassName(Config.CLIENT_PACKAGE, Config.CLIENT_ACTIVITY).takeIf {
-                it.resolveActivity(pm) != null
-            }
+        val installed = try { pm.getPackageInfo(Config.CLIENT_PACKAGE, 0); true } catch (e: Exception) { false }
+        val intent = if (installed) pm.getLaunchIntentForPackage(Config.CLIENT_PACKAGE) else null
         if (intent == null) {
             if (Config.CLIENT_APK_URL.isBlank()) {
                 findViewById<TextView>(R.id.status).text = "Game client not installed (${Config.CLIENT_PACKAGE}). Install it first, then press PLAY."
