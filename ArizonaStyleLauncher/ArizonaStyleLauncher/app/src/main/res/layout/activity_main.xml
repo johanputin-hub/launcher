@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:gravity="center"
+    android:background="@drawable/bg_gradient" android:padding="28dp">
+
+    <TextView android:id="@+id/title" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textColor="#FFFFFF" android:textSize="26sp" android:textStyle="bold" android:letterSpacing="0.1" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="MOBILE" android:textColor="@color/accent" android:textSize="14sp"
+        android:letterSpacing="0.5" android:layout_marginBottom="36dp" />
+
+    <EditText android:id="@+id/nick" android:layout_width="match_parent" android:layout_height="52dp"
+        android:hint="Nickname" android:inputType="textNoSuggestions" android:maxLength="20"
+        android:textColor="#FFFFFF" android:textColorHint="#88FFFFFF" android:paddingHorizontal="16dp"
+        android:background="@drawable/field_bg" />
+
+    <Spinner android:id="@+id/servers" android:layout_width="match_parent" android:layout_height="52dp"
+        android:layout_marginTop="12dp" android:background="@drawable/field_bg" android:paddingHorizontal="8dp" />
+
+    <TextView android:id="@+id/status" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+
+    <ProgressBar android:id="@+id/progress" style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent" android:layout_height="6dp" android:layout_marginTop="14dp"
+        android:max="100" android:visibility="gone" />
+
+    <Button android:id="@+id/play" android:layout_width="match_parent" android:layout_height="56dp"
+        android:layout_marginTop="28dp" android:text="PLAY" android:textStyle="bold" android:textSize="16sp"
+        android:textColor="#FFFFFF" android:background="@drawable/btn_bg" />
+</LinearLayout>

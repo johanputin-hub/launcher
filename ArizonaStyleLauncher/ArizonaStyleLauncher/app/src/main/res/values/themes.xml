@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.Launcher" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:statusBarColor">#0B0F1A</item>
+        <item name="android:navigationBarColor">#1B2A49</item>
+    </style>
+</resources>
